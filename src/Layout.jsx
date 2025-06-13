@@ -21,7 +21,7 @@ const Layout = () => {
                         marginRight: '20px',
                         color: '#f9a826' 
                     }}>
-                        EliteBasket
+                        EliteBasketBall
                     </span>
                 </div>
                 <nav style={{ display: 'flex', gap: '20px' }}>
