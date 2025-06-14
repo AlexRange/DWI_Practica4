@@ -55,7 +55,7 @@ const Layout = () => {
                     </a>
                 </div>
                 <p style={{ margin: '0', fontSize: '14px' }}>
-                    © 2025 <strong>EliteBasket</strong> - Todos los derechos reservados | Creado por <strong>Alejandro Rangel</strong>
+                    © 2025 <strong>EliteBasketPro</strong> - Todos los derechos reservados | Creado por <strong>Alejandro Rangel Perez</strong>
                 </p>
             </footer>
         </div>
