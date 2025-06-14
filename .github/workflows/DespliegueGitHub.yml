@@ -49,4 +49,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/desawebintegral-alexrp:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/DWI_Practica04:latest
