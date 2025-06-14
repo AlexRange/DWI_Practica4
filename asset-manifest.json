@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/DWI_Practica4/static/css/main.f855e6bc.css",
-    "main.js": "/DWI_Practica4/static/js/main.ccda7632.js",
+    "main.js": "/DWI_Practica4/static/js/main.581589c9.js",
     "static/js/453.b9bc37d0.chunk.js": "/DWI_Practica4/static/js/453.b9bc37d0.chunk.js",
     "index.html": "/DWI_Practica4/index.html",
     "main.f855e6bc.css.map": "/DWI_Practica4/static/css/main.f855e6bc.css.map",
-    "main.ccda7632.js.map": "/DWI_Practica4/static/js/main.ccda7632.js.map",
+    "main.581589c9.js.map": "/DWI_Practica4/static/js/main.581589c9.js.map",
     "453.b9bc37d0.chunk.js.map": "/DWI_Practica4/static/js/453.b9bc37d0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.ccda7632.js"
+    "static/js/main.581589c9.js"
   ]
 }
