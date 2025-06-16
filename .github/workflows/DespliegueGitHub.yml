@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -17,34 +17,54 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # --- Instalación y Build de React ---
+      # --- Configurar Node.js ---
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
+      # --- Instalar dependencias ---
       - name: Install dependencies
         run: npm install
 
-      - name: Build app
-        run: npm run build
+      # --- Construir aplicación ---
+      - name: Build application
+        run: |
+          npm run build
+          cp public/404.html build/404.html
+          echo 'PUBLIC_URL=/' > build/.env
 
-      # --- Despliegue en GitHub Pages ---
+      # --- Desplegar en GitHub Pages ---
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
-          keep_files: false  # Borra el contenido previo
+          keep_files: false
+          # Forzamos la configuración de GitHub Pages
+          env: |
+            PUBLIC_URL=/DWI_Practica4
 
-      # --- Docker: Login y Push ---
+      # --- Construir imagen Docker ---
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          tags: alexlinuxball11/dwi-practica4:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # --- Publicar en Docker Hub ---
       - name: Login to Docker Hub
+        if: success()
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}  # Tu usuario: alexlinuxball11
-          password: ${{ secrets.DOCKER_HUB_TOKEN }}     # Token con permisos READ/WRITE
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Build and push Docker image
+      - name: Push to Docker Hub
+        if: success()
         uses: docker/build-push-action@v5
         with:
           context: .
