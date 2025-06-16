@@ -1,18 +1,28 @@
-# Imagen Node dependiendo de versión instalada
-FROM node:24
+# Usamos la imagen Alpine más ligera
+FROM node:18-alpine
 
-# Establece el directorio de trabajo
+# Establecemos el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos del proyecto
+# Copiamos solo lo necesario para instalar dependencias
 COPY package.json package-lock.json ./
 RUN npm install
 
+# Copiamos el resto de los archivos
 COPY . .
 
-# Expone el puerto de React
-ENV PORT=4000
+# Configuración para producción
+ENV NODE_ENV=production
+ENV PUBLIC_URL=/
+
+# Construimos la aplicación
+RUN npm run build
+
+# Instalamos serve globalmente
+RUN npm install -g serve
+
+# Puerto de la aplicación
 EXPOSE 4000
 
-# Ejecuta la aplicación en desarrollo
-CMD ["npm", "start"]
+# Comando para servir la aplicación
+CMD ["serve", "-s", "build", "-l", "4000"]
