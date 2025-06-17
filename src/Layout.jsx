@@ -21,7 +21,7 @@ const Layout = () => {
                         marginRight: '20px',
                         color: '#f9a826' 
                     }}>
-                        EliteBasketBall by Alex RP.
+                        EliteBasketBall Lunes 16.
                     </span>
                 </div>
                 <nav style={{ display: 'flex', gap: '20px' }}>

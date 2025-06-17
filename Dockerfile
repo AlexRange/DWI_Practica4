@@ -1,4 +1,4 @@
-# Usamos la imagen Alpine más ligera
+#  imagen Alpine más ligera
 FROM node:18-alpine
 
 # Establecemos el directorio de trabajo
